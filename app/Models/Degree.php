@@ -25,4 +25,9 @@ class Degree extends Model
     {
         return $this->belongsToMany(Student::class, 'students_degrees');
     }
+    
+    public function subjects(): BelongsToMany
+    {
+        return $this->belongsToMany(Subject::class, 'degree_subjects');
+    }
 }

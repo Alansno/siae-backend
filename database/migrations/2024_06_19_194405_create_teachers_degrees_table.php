@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('degree_id')->constrained('degrees');
             $table->date('date_init');
             $table->date('date_end');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

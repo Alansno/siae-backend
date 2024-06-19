@@ -17,7 +17,10 @@ return new class extends Migration
             $table->date('date_birth');
             $table->string('phone_student');
             $table->string('address_student');
+            $table->string('status');
+            $table->string('image');
             $table->foreignId('user_id')->constrained('users');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

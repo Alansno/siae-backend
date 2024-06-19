@@ -11,9 +11,11 @@ class Permission extends Model
     use HasFactory;
 
     protected $fillable = [
+        'reason',
         'type_permission',
         'date_permission_init',
-        'date_permission_end'
+        'date_permission_end',
+        'description'
     ];
 
     public function user(): BelongsTo

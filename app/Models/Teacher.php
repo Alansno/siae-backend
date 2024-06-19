@@ -16,7 +16,9 @@ class Teacher extends Model
         'name',
         'date_birth',
         'teacher_phone',
-        'teacher_address'
+        'teacher_address',
+        'status',
+        'image'
     ];
 
     public function user(): BelongsTo {
@@ -31,5 +33,9 @@ class Teacher extends Model
     public function studies(): HasMany
     {
         return $this->hasMany(Study::class, 'teacher_id');
+    }
+
+    public function subjects(): BelongsToMany{
+        return $this->belongsToMany(Subject::class, 'teacher_subjects');
     }
 }

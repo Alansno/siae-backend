@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name_degree');
             $table->date('date_validate_init');
             $table->date('date_validate_end');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -15,7 +15,9 @@ class Student extends Model
         'name',
         'date_birth',
         'phone_student',
-        'address_student'
+        'address_student',
+        'status',
+        'image'
     ];
 
     public function user(): BelongsTo {

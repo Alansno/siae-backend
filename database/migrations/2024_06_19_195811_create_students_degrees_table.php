@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('group_id')->constrained('groups');
             $table->date('date_init');
             $table->date('date_end');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
