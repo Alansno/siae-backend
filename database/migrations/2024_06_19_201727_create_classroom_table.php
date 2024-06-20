@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('classroom', function (Blueprint $table) {
             $table->id();
-            $table->decimal('califications');
             $table->string('status');
             $table->integer('capacity');
-            $table->foreignId('student_id')->constrained('students');
             $table->foreignId('subject_id')->constrained('subjects');
             $table->foreignId('teacher_id')->constrained('teachers');
             $table->softDeletes();

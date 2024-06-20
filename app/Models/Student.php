@@ -29,9 +29,9 @@ class Student extends Model
         return $this->belongsToMany(Degree::class, 'students_degrees');
     }
 
-    public function subjects(): BelongsToMany
+    public function classrooms(): BelongsToMany
     {
-        return $this->belongsToMany(Subject::class, 'classroom');
+        return $this->belongsToMany(Classroom::class, 'student_classrooms');
     }
 
     public function semesters(): BelongsToMany

@@ -15,17 +15,12 @@ class Subject extends Model
         'credits'
     ];
 
-    public function students(): BelongsToMany
-    {
-        return $this->belongsToMany(Student::class, 'classroom');
-    }
-
     public function degrees(): BelongsToMany
     {
         return $this->belongsToMany(Degree::class, 'degree_subjects');
     }
 
     public function teachers(): BelongsToMany{
-        return $this->belongsToMany(Teacher::class, 'teacher_subjects');
+        return $this->belongsToMany(Teacher::class, 'classroom');
     }
 }
