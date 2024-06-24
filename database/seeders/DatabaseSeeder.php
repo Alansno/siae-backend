@@ -49,5 +49,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Yuyo',
             'user_id' => 3
         ]);
+
+//APARTADO PARA LOS ALUMNOS
+//APARTADO PARA LOS MAESTROS
+
     }
 }

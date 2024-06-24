@@ -12,7 +12,8 @@ class Subject extends Model
 
     protected $fillable = [
         'subject',
-        'credits'
+        'credits',
+        'semester_id'
     ];
 
     public function degrees(): BelongsToMany
