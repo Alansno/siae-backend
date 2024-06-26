@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Foundation\Http\FormRequest;
 
-class CreateTeacherRequest extends FormRequest
+class CreateStudyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,11 @@ class CreateTeacherRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|unique:users',
-            'role' => 'required|string',
-            'password' => 'required|string',
-            'name' => 'required|string',
-            'date_birth' => 'required|date',
-            'teacher_phone' => 'required|string',
-            'teacher_address' => 'required|string',
-            'degree_id' => 'required|integer',
+            'name_study' => 'required|string',
+            'type_study' => 'required|string',
             'date_init' => 'required|date',
-            'date_end' => 'required|date'
+            'date_end' => 'required|date',
+            'institution' => 'required|string'
         ];
     }
 

@@ -4,7 +4,7 @@ namespace App\Services;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\UnauthorizedException;
-use Illuminate\Support\Facades\Auth;
+
 
 class AuthService {
 
@@ -13,7 +13,7 @@ class AuthService {
         $user = User::where('email', $data->email)->select('id', 'email', 'password', 'role')->first();
         if (!$user || !Hash::check($data->password, $user->password)) throw new UnauthorizedException('Credenciales incorrectas');
 
-        $token = $user->createToken('auth_token', ['email' => $user->email, 'role' => $user->role]);
+        $token = $user->createToken('auth_token', ['email' => $user->email, 'role' => $user->role, 'id' => $user->id]);
 
         return $token->plainTextToken;
     }
