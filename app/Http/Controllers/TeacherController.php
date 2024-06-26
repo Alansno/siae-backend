@@ -24,7 +24,7 @@ class TeacherController extends Controller
 
         try{
             $teacher = $this->teacherService->createTeacher($request);
-            return Response::sendResponse($teacher, "Docente Creado",201);
+            return Response::sendResponse(true,$teacher, "Docente Creado",201);
         }catch(QueryException $ex){
             throw new \Exception($ex = "Error Processing Request", 1);  
         }catch(\Exception $ex){
@@ -36,7 +36,7 @@ class TeacherController extends Controller
 public function room(CreateRoomRequest $request){
 try{
     $betch = $this->teacherService->createRoom($request, $request->teacher_id, $request->subject_id);
-    return Response::sendResponse($betch,"Salon Creado",201);
+    return Response::sendResponse(true,$betch,"Salon Creado",201);
 }catch(QueryException $ex){
     throw new \Exception($ex = "Error Processing Request", 1);  
 }catch(\Exception $ex){
