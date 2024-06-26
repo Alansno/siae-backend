@@ -21,10 +21,9 @@ class SubjectController extends Controller
 
         try{
             $subject = $this->subjectService->createSubject($request);
-            return Response::sendResponse($subject, "Creando Materia",201);
+            return Response::sendResponse(true, $subject, "Creando Materia",201);
         }catch(QueryException $e){
             throw new \Exception("PENDEJO");
-            
         }
     }
 
