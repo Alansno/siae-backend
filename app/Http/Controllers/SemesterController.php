@@ -24,7 +24,7 @@ class SemesterController extends Controller
         try{
 
             $semester = $this->semesterService->createSemester($request);
-            return Response::sendResponse($semester, "Creado Semestre",201);//status - 201 OK
+            return Response::sendResponse(true, $semester, "Creado Semestre",201);//status - 201 OK
 
         }catch(QueryException $e){
             throw new \Exception($e->getMessage());
@@ -33,7 +33,5 @@ class SemesterController extends Controller
             throw new \Exception("Pendejo");
         }        
     }
-
-
 
 }

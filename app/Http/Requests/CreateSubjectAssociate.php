@@ -3,10 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-class SubjectRequest extends FormRequest
+
+class CreateSubjectAssociate extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class SubjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "subject" => "required|string|unique:subjects",
-            "credits" => "required|integer",
-            "semester_id" => "required|integer"
+            'degree_id' => 'required|integer',
+            'subject_id' => 'required|integer'
         ];
     }
 

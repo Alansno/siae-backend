@@ -22,7 +22,7 @@ class GroupController extends Controller
         try{
 
             $group = $this->groupService->createGroup($request);
-            return Response::sendResponse($group, "Creado Grupo",201);//status - 201 OK
+            return Response::sendResponse(true, $group, "Creado Grupo",201);//status - 201 OK
 
         }catch(QueryException $e){
             throw new \Exception($e->getMessage());

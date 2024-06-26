@@ -24,7 +24,7 @@ class SemesterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "semester" => "required|integer"
+            "semester" => "required|integer|unique:semesters"
         ];
     }
 
