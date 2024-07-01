@@ -10,21 +10,36 @@ class AuthService {
 
     public function login($data)
     {
-        $user = User::where('email', $data->email)->select('id', 'email', 'password', 'role')->first();
-        if (!$user || !Hash::check($data->password, $user->password)) throw new UnauthorizedException('Credenciales incorrectas');
+        $credentials = ['email' => $data->email, 'password' => $data->password];
+        if (! $token = auth()->claims($this->getClaims($data->email))->attempt($credentials)) {
+            throw new UnauthorizedException("Credenciales incorrectas");
+        }
 
-        $token = $user->createToken('auth_token', ['email' => $user->email, 'role' => $user->role, 'id' => $user->id]);
-
-        return $token->plainTextToken;
+        return $this->respondWithToken($token);
     }
 
     public function logout()
     {
-        $user = auth()->user();
-        if ($user) {
-            $user->tokens()->delete();
-        } else {
-            throw new UnauthorizedException('No hay usuario autenticado');
-        }
+        auth()->logout();
+        return true;
+    }
+
+    protected function respondWithToken($token)
+    {
+        return [
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60
+        ];
+    }
+
+    private function getClaims($email)
+    {
+        $user = User::where('email', $email)->first();
+        return [
+            'id' => $user->id,
+            'email' => $user->email,
+            'role' => $user->role
+        ];
     }
 }

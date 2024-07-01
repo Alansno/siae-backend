@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest;
 use App\Models\Response;
+use App\Models\User;
 use App\Services\AuthService;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -39,5 +40,11 @@ class AuthController extends Controller
     {
         $this->authService->logout();
         return Response::sendResponse(true, '', 'Sesión cerrada', 200);
+    }
+
+    public function users()
+    {
+        $user = User::all();
+        return response()->json($user);
     }
 }
