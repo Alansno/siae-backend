@@ -18,9 +18,9 @@ class ScheduleRequest extends FormRequest
     public function rules(): array
     {
         return [
-        'date_class_init' => 'required|date_format:Y-m-d H:i:s',
-        'date_class_end' => 'required|date_format:Y-m-d H:i:s|after:date_class_init',
-
+        'date_class_init' => 'required|date',
+        'date_class_end' => 'required|date',
+        'timezone' => 'required'
         ];
     }
 }
